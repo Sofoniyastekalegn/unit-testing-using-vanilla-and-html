@@ -38,8 +38,27 @@ describe("index.html", () => {
 
 
     it("renders a button element", () => {
-        expect(container.querySelector("h1"))
+        expect(container.querySelector("button")).not.toBeNull()
+        expect(getByText(container, "Click me for a terrible pun")).toBeInTheDocument()
+
+
+    })
+
+    it("renders a new paragrpah via javascript when the button is clicked", async () => {
+        const button = greyByText(container, "Click me a for a terrrible pun")
+
+        fireEvent.click(button)
+
+        let generatedParagraphs = container.querySelectorAll("#pun-container p")
+
+        expect(generatedParagraphs.length).toBe(2)
+
+        fireEvent.click(button)
+        generatedParagraphs = container.querySelectorAll("#pun-container p")
+
+        expect(generatedParagraphs.length).toBe(3)
     })
 
 
 })
+
