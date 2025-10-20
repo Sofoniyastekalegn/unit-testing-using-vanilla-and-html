@@ -70,9 +70,19 @@
 
                           const appendNewPun = () => {
                             const p = document.createElement("p");
-                            
-                          }
-                        })
+
+                            p.innerHTML = puns[counter++] || "I'm all out of puns!";
+
+                            document.querySelector("#pun-container").prepend(p);
+
+
+                          };
+
+                          button.addEventListener("click", appendNewPun);
+                          const button = document.querySelector("button")
+                        })();
+
+                        </script>
 
               
               
